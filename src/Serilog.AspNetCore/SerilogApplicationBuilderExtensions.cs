@@ -66,9 +66,9 @@ public static class SerilogApplicationBuilderExtensions
         configureOptions?.Invoke(opts);
 
         if (opts.MessageTemplate == null)
-            throw new ArgumentException($"{nameof(opts.MessageTemplate)} cannot be null.");
+            throw new ArgumentNullException(nameof(opts.MessageTemplate));
         if (opts.GetLevel == null)
-            throw new ArgumentException($"{nameof(opts.GetLevel)} cannot be null.");
+            throw new ArgumentNullException(nameof(opts.GetLevel));
 
         return app.UseMiddleware<RequestLoggingMiddleware>(opts);
     }
